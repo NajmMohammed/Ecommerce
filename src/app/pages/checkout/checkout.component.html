@@ -1,0 +1,26 @@
+<section class="w-1/2 mx-auto bg-gray-400 p-6 rounded-md shadow drop-shadow-lg">
+    <h1 class="text-3xl font-normal text-center text-green-800">CheckOut</h1>
+
+
+    <form [formGroup]="checkOutForm" (ngSubmit)="submitForm()">
+        <div class="mb-2">
+            <label for="details" class="block mb-2 text-sm font-medium text-gray-900 ">Details</label>
+            <textarea id="details" formControlName="details" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 "></textarea>
+        </div>
+        <div class="mb-2">       
+            <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 ">phone</label>
+            <input id="phone" formControlName="phone" type="tel"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 ">
+        </div>
+        <div class="mb-2">       
+            <label for="city" class="block mb-2 text-sm font-medium text-gray-900 ">city</label>
+            <input id="city" formControlName="city" type="text"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 ">
+        </div>
+
+    <button class="btn-main" type="submit" [disabled]="checkOutForm.invalid">Pay Now</button>
+
+
+
+
+    </form>
+</section>
+

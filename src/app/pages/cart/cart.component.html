@@ -1,0 +1,42 @@
+<section>
+    @if (cartDetails.totalCartPrice) {
+        <div class="w-2/3 mx-auto bg-gray-100 rounded-md shadow p-3">
+            <h2 class="text-center text-3xl text-green-400">Cart</h2>
+    <div class="flex justify-between items-center">
+        <span class="text-green-600 mb-2">Total Cart Price: {{cartDetails.totalCartPrice | currency:'GBP'}}</span>
+        <button [routerLink]="['/checkout' , cartDetails._id]" class="btn-main"> CheckOut</button>
+    </div>
+    
+    @for (prod of cartDetails.products; track prod.product.id ) {
+        <div class=" gap-2 mb-2 border-b border-t grid md:grid-cols-[20%_minmax(0,1fr)]">
+    
+            <div>
+                <img class="w-full object-contain"  [src]="prod.product.imageCover" [alt]="prod.product.title">
+            </div>
+    
+            <div class="flex justify-between items-center">
+                <div>
+                  <h3>{{prod.product.title}}</h3>
+                  <p>Price: {{prod.price | currency: 'GBP'}} </p>   
+                  <button (click)="removeItem(prod.product.id)" class="bg-green-600 py-2 px-4 rounded-md text-white "> <i class="fas fa-trash-can text-red-600 "></i> Remove</button>
+                </div>
+                <div class="flex gap-1 items-center">
+                    <button (click)="updateCount(prod.product.id,prod.count + 1)" class="text-green-600 text-2xl"><i class=" fas fa-plus-circle"></i></button>
+                    <span>{{prod.count}}</span>
+                    <button (click)="updateCount(prod.product.id,prod.count - 1)" class="text-red-600 text-2xl" ><i class=" fas fa-minus-circle"></i></button>
+                </div>
+            </div>
+        </div>
+    }
+    <button (click)="clearUserCart()" class="rounded-md bg-green-800  py-2 px-4 text-white "><i class="fas fa-trash-can text-red-600"></i> Clear Cart</button>
+        </div>
+    }
+    @else {
+     <div class="w-2/3 mx-auto bg-gray-100 rounded-md shadow p-3">
+        <h2 class="text-center text-4xl py-10">Cart Is Empty</h2>
+        <p class="text-center text-6xl text-red-600 py-10"><i class="fa-solid fa-cart-shopping"></i></p>
+     </div>   
+    }
+
+
+</section>

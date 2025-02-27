@@ -1,0 +1,36 @@
+<section>
+
+    <div class="w-2/3 mx-auto bg-gray-100 rounded-md shadow p-3">
+        <h2 class="text-center mb-2 text-3xl text-red-400">WishList</h2>
+
+<div *ngFor="let item of wishlistDetails; let i=index">
+<div class="gap-2 mb-2 border-b border-t grid md:grid-cols-[20%_minmax(0,1fr)]">
+    <div>
+        <img class="w-full object-contain" [src]="item.imageCover" [alt]="item.title">
+    </div>
+    <div class="flex justify-between items-center">
+        <div>
+          <h3 class="mb-1">{{item.title}}</h3>
+          <p class="mb-1">Price: {{item.price | currency: 'GBP'}} </p>   
+<div class="flex justify-between gap-2">
+    <button (click)="removeItem(item.id)" class="bg-green-600 py-2 px-4 rounded-md text-white "> <i class="fas fa-trash-can text-red-600 "></i> Remove</button>
+    <button (click)="addToCart(item.id)" class="bg-green-600 py-2 px-4 rounded-md text-white">Add To Cart</button>
+</div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</section>

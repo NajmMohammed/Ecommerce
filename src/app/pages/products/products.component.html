@@ -1,0 +1,35 @@
+<section>
+    <div class="flex items-center justify-center gap-3  ">
+     <label for="search"><i class="fa fa-search text-3xl" aria-hidden="true"></i></label>
+     <input [(ngModel)]="userInput" placeholder="Search..."  id="search"  type="search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-1/2 p-2.5  ">
+    </div>
+ 
+     <h2 class="text-3xl py-3">Popular Products</h2>
+     <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+ @for (prod of products | search : userInput ; track prod.id) {
+     <div class="card overflow-hidden border rounded-md shadow-md border-teal-600">
+<div [routerLink]="['/details' , prod._id]" >
+    <div class="card-img">
+        <img [src]="prod.imageCover" class="w-full h-[250px] object-contain" [alt]="prod.title">
+    </div>
+    <div class="card-body px-2 py-3" >
+        <h4 class="text-xs text-teal-600">{{prod.category.name}}</h4>
+        <h3 class="font-medium"> {{prod.title.split(' ' , 2).join(' ')}}</h3>
+        <div class="flex justify-between items-center">
+        <span>{{prod.price | currency : "GBP" }}</span>
+        <div class="flex items-center">
+            <i class="fas fa-star text-yellow-400"></i>
+            <span class="text-black">{{prod.ratingsAverage}}</span>
+        </div>    
+        </div>
+    </div>
+</div>
+ 
+<div class="flex justify-between px-2">
+    <button (click)="addToCart(prod.id)" class="bg-green-600 w-[70%] block py-2 px-10 border rounded-md my-3">Add To Cart</button>
+    <button (click)="addToWishlist(prod.id)" class=" "><i class="fas fa-heart text-red-600 text-3xl"></i></button>
+</div>
+     </div>
+ }
+     </div>
+ </section>

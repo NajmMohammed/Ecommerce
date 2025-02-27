@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.carousel';
+@import 'ngx-owl-carousel-o/lib/styles/scss/owl.theme.default';
+@import 'ngx-toastr/toastr';
+
+.btn-main {
+
+    @apply disabled:bg-red-800 bg-green-800 py-2 px-10 rounded-md text-white hover:bg-green-950 transition-colors duration-200 ;
+}
+body {
+    font-family: "Playfair Display", serif;
+}
+
+.card {
+    @apply hover:shadow-green-400 transition-all duration-150
+}
